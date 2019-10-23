@@ -1,0 +1,31 @@
+@charset "UTF-8";
+/* 页面左右间距 */
+/* 文字尺寸 */
+/*文字颜色*/
+/* 边框颜色 */
+/* 图片加载中颜色 */
+/* 行为相关颜色 */
+.circle-float.data-v-77679b72 {
+  position: fixed;
+  left: 50%;
+  bottom: 70rpx;
+  -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+  /* 50%为自身尺寸的一半 */
+  -webkit-transform: translate(-50%, -50%);
+}
+.circle-float .btn_add_text.data-v-77679b72 {
+    font-size: 40rpx;
+    font-weight: bold;
+}
+.imgHelp.data-v-77679b72 {
+  width: 96rpx;
+  height: 96rpx;
+  overflow: hidden;
+}
+.imgHelp image.data-v-77679b72 {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+

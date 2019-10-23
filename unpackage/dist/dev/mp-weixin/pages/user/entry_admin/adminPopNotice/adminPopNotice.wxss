@@ -1,0 +1,67 @@
+@charset "UTF-8";
+/* 页面左右间距 */
+/* 文字尺寸 */
+/*文字颜色*/
+/* 边框颜色 */
+/* 图片加载中颜色 */
+/* 行为相关颜色 */
+.ljTextAreaFa .ljTextArea.data-v-5cd70786 {
+  width: 100%;
+  font-size: 40rpx;
+  font-weight: bold;
+  height: 80rpx;
+}
+.input-content.data-v-5cd70786 {
+  width: 100%;
+}
+.input-content textarea.data-v-5cd70786 {
+  padding: 16rpx 25rpx 15rpx 25rpx;
+  font-size: 30rpx;
+  min-height: 500rpx;
+  line-height: 1.5;
+}
+.preview.data-v-5cd70786 {
+  border-top: 1rpx solid #e0e0e0;
+  width: 100%;
+}
+.toolbar.data-v-5cd70786 {
+  width: 100%;
+  border: none;
+  -webkit-box-shadow: 0 0rpx 4rpx rgba(0, 0, 0, 0.157), 0 0rpx 4rpx rgba(0, 0, 0, 0.227);
+          box-shadow: 0 0rpx 4rpx rgba(0, 0, 0, 0.157), 0 0rpx 4rpx rgba(0, 0, 0, 0.227);
+}
+.toolbar .iconfont.data-v-5cd70786 {
+  display: inline-block;
+  cursor: pointer;
+  height: 61.6rpx;
+  width: 61.6rpx;
+  margin: 13rpx 0 11rpx 0rpx;
+  font-size: 33rpx;
+  padding: 10rpx 13rpx 11rpx 8rpx;
+  color: #757575;
+  border-radius: 11rpx;
+  text-align: center;
+  background: none;
+  border: none;
+  outline: none;
+  line-height: 2.2;
+  vertical-align: middle;
+}
+.ljBottomButton.data-v-5cd70786 {
+  left: 0;
+  right: 0;
+  font-size: 28rpx;
+  position: fixed;
+  bottom: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 50px;
+}
+.ljBottomButton .ljButtHelp.data-v-5cd70786 {
+    width: 100%;
+    height: 100%;
+}
+

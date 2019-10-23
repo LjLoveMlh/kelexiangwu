@@ -1,0 +1,9 @@
+{
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "柯乐聚物",
+  "usingComponents": {
+    "uni-notice-bar": "/components/uni-notice-bar/uni-notice-bar",
+    "uni-pagination": "/components/uni-pagination/uni-pagination",
+    "u-parse": "/components/uParse/src/wxParse"
+  }
+}

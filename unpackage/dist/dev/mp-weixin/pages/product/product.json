@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "详情展示",
+  "usingComponents": {
+    "uni-countdown": "/components/uni-countdown/uni-countdown",
+    "u-parse": "/components/uParse/src/wxParse"
+  }
+}

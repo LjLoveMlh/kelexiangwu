@@ -1,0 +1,179 @@
+<template>
+	<view>
+		<view class="cu-bar bg-white solid-bottom margin-top-sm">
+			<view class="action">
+				<text class="cuIcon-titles text-orange"></text>个人信息
+			</view>
+		</view>
+		<view class="cu-list menu">
+			<view class="cu-item flex">
+				<view class="text">用户名</view>
+				<view>{{user_info.username}}</view>
+			</view>
+			<view class="cu-item flex">
+				<view class="text">手机号</view>
+				<view>{{user_info.phone_num}}</view>
+			</view>
+			<view class="cu-item flex">
+				<view class="text">QQ</view>
+				<view>{{user_info.contact_qq}}</view>
+			</view>
+			<view class="cu-item flex">
+				<view class="text">微信</view>
+				<view>{{user_info.contact_wx}}</view>
+			</view>
+		</view>
+
+
+		<view class="cu-bar bg-white solid-bottom margin-top-sm">
+			<view class="action">
+				<text class="cuIcon-titles text-red"></text>重要日期
+			</view>
+		</view>
+		<view class="cu-list menu">
+			<block>
+				<view class="cu-item flex">
+					<view class="text">上次登录</view>
+					<view >{{user_info.last_login?user_info.last_login:'暂无信息'}}</view>
+				</view>
+				<view class="cu-item flex">
+					<view class="text">加入日期</view>
+					<view >{{user_info.date_joined?user_info.date_joined:'暂无信息'}}</view>
+				</view>
+			</block>
+
+			<view class="cu-item flex">
+				<view class="text">账户生效时间</view>
+				<view>{{user_info.start_time?user_info.start_time:'暂无信息'}}</view>
+			</view>
+			<view class="cu-item flex">
+				<view class="text">账户失效时间</view>
+				<view>{{temp_role==1||temp_role==0?'永久不失效':user_info.end_time?user_info.end_time:'暂无信息'}}</view>
+			</view>
+		</view>
+		<view class="cu-bar bg-white solid-bottom margin-top-sm">
+			<view class="action">
+				<text class="cuIcon-titles text-blue"></text>代理信息
+			</view>
+		</view>
+		<view class="cu-list menu">
+			<view class="cu-item flex">
+				<view class="text">商户名称</view>
+				<view>{{user_info.store_name}}</view>
+			</view>
+			<view class="cu-item flex">
+				<view class="text">负责人</view>
+				<view>{{user_info.charge_man}}</view>
+			</view>
+			<view class="cu-item flex">
+				<view class="text">身份证号</view>
+				<view>{{user_info.idcard_num}}</view>
+			</view>
+			<view class="cu-item flex">
+				<view class="text">推荐人</view>
+				<view>{{user_info.recommender}}</view>
+			</view>
+			<view class="cu-item flex" @tap="showSalesManInfo">
+				<view class="text ">所属业务员</view>
+				<view class="text-blue">{{salesmanInfo.username}}</view>
+			</view>
+		</view>
+
+		<!-- 业务员信息 -->
+		<view class="cu-modal" :class="salesmanFlag?'show':''" @touchmove.stop.prevent="moveHandle">
+			<view class="cu-dialog">
+				<view class="cu-bar justify-end text-black">
+					<view class="content text-bold">
+						业务员信息
+					</view>
+					<view class="action" @tap="hideModalMore">
+						<text class="cuIcon-close "></text>
+					</view>
+				</view>
+				<view style="width: 100%;height: 350px;">
+					<view class="cu-list menu">
+						<view class="cu-item flex">
+							<view class="text">姓名</view>
+							<view>{{salesmanInfo.username}}</view>
+						</view>
+						<view class="cu-item flex">
+							<view class="text">手机哈</view>
+							<view>{{salesmanInfo.phone_num}}</view>
+						</view>
+						<view class="cu-item flex">
+							<view class="text">QQ</view>
+							<view>{{salesmanInfo.contact_qq}}</view>
+						</view>
+						<view class="cu-item flex">
+							<view class="text">微信</view>
+							<view>{{salesmanInfo.contact_wx}}</view>
+						</view>
+					</view>
+				</view>
+
+				<view class="cu-bar bg-red">
+					<view class="action margin-0 flex-sub  solid-left" @tap="hideModalMore">关闭</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</template>
+
+<script>
+	import {
+		mapState,
+		mapMutations
+	} from 'vuex';
+	export default {
+		data() {
+			return {
+				user_info: {},
+				salesmanInfo: {},
+				salesmanFlag: false,
+				temp_role: 2,
+			};
+		},
+		computed: {
+			...mapState(['userInfo', 'token', 'role']),
+		},
+		methods: {
+			hideModalMore() {
+				this.salesmanFlag = false;
+			},
+			showSalesManInfo() {
+				this.salesmanFlag = true;
+			},
+			// 解决蒙层滚动问题
+			moveHandle() {
+				return;
+			},
+		},
+		onLoad() {
+			this.temp_role = this.role;
+			if (this.userInfo) {
+				this.user_info = this.userInfo;
+				var _self = this;
+				var now_token = this.token
+				if (this.userInfo.salesman) {
+					uni.request({
+						url: _self.global_baseUrl + '/user_detail/' + this.userInfo.salesman,
+						header: {
+							'Authorization': ' Token ' + now_token
+						},
+						method: "GET",
+						success: (res) => {
+							_self.check_statusCode(res.statusCode)
+							_self.salesmanInfo = res.data;
+						}
+					});
+				}
+
+			}
+		}
+	}
+</script>
+
+<style lang="scss">
+
+
+</style>

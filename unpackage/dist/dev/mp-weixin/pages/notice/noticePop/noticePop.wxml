@@ -1,0 +1,1 @@
+<view><view class="padding-sm margin-bottom"><u-parse vue-id="1" content="{{popContent.notice_content}}" imageProp="{{imageProp}}" data-event-opts="{{[['^preview',[['preview']]],['^navigate',[['navigate']]]]}}" bind:preview="__e" bind:navigate="__e" bind:__l="__l"></u-parse></view></view>
